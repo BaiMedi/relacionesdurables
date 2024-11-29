@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrategia de Fidelización</title>
+    <style>
+        body {
+            font-family: 'Sora', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1, h2 {
+            color: #22C0DC;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .btn {
+            background-color: #01BD39;
+            color: white;
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background-color: #019c31;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f8ff;
+            border: 1px solid #22C0DC;
+            border-radius: 5px;
+        }
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #22C0DC;
+        }
+        footer p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        footer a {
+            display: inline-block;
+            color: white;
+            background-color: #01BD39;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Diseña tu Estrategia de Fidelización</h1>
+    <p>Completa los campos para establecer un plan sólido que fortalezca tus relaciones con clientes.</p>
+
+    <label for="client-name">1. Nombre del cliente:</label>
+    <input type="text" id="client-name" placeholder="Ejemplo: Empresa ABC" />
+
+    <label for="follow-up">2. Frecuencia de seguimiento (en días):</label>
+    <input type="number" id="follow-up" placeholder="Ejemplo: 7" />
+
+    <label for="contact-points">3. Puntos de contacto clave:</label>
+    <textarea id="contact-points" placeholder="Ejemplo: Reuniones mensuales, correos de estado, llamadas de feedback..."></textarea>
+
+    <label for="tools">4. Herramientas para gestionar la relación:</label>
+    <select id="tools">
+        <option value="CRM">CRM (Ejemplo: HubSpot)</option>
+        <option value="Calendly">Calendly</option>
+        <option value="Trello">Trello</option>
+        <option value="Otros">Otros</option>
+    </select>
+
+    <button class="btn" onclick="generateStrategy()">Generar Estrategia</button>
+
+    <div id="result" class="result" style="display: none;">
+        <h2>Tu Estrategia de Fidelización:</h2>
+        <p id="strategy"></p>
+        <p id="suggestion" style="color: #22C0DC; font-weight: bold;"></p>
+    </div>
+</div>
+
+<footer>
+    <p>Descubre el Secreto de Reinventarse Profesionalmente en Solo 14 Días</p>
+    <a href="https://klicana.work/Ecpzgd">¡SÍ! INSCRIBIRME EN “ASISTENTE VIRTUAL EN 14 DÍAS”</a>
+</footer>
+
+<script>
+    function generateStrategy() {
+        const clientName = document.getElementById('client-name').value;
+        const followUp = parseInt(document.getElementById('follow-up').value);
+        const contactPoints = document.getElementById('contact-points').value.split(',');
+        const tools = document.getElementById('tools').value;
+
+        if (!clientName || isNaN(followUp) || contactPoints.length === 0 || tools === "") {
+            alert("Por favor, completa todos los campos.");
+            return;
+        }
+
+        let strategy = `Cliente: ${clientName}\n\n`;
+        strategy += `Frecuencia de seguimiento: Cada ${followUp} días\n`;
+        strategy += `Puntos de contacto clave:\n`;
+        contactPoints.forEach((point, index) => {
+            strategy += ` - ${point.trim()}\n`;
+        });
+        strategy += `\nHerramientas recomendadas: ${tools}`;
+
+        document.getElementById('strategy').textContent = strategy;
+
+        const suggestions = {
+            "CRM": "Usa un CRM para centralizar la información del cliente y mejorar el seguimiento.",
+            "Calendly": "Configura reuniones automáticas para simplificar la programación.",
+            "Trello": "Organiza las tareas y puntos de seguimiento visualmente en tableros.",
+            "Otros": "Explora herramientas que se ajusten específicamente a tu negocio."
+        };
+
+        document.getElementById('suggestion').textContent = suggestions[tools];
+        document.getElementById('result').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
